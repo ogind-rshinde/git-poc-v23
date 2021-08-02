@@ -52,22 +52,25 @@ echo "$(tput setaf 3) "
 
 echo "executing command: git fetch origin"
 git fetch origin
+isBranchCreated=0
 
 if test "$branchOption" = 1; then
-  branchPrefix="feat"
+  git checkout --no-track -b "feat-${ticket,,}/$USERNAME/${description,,}" origin/main
+  isBranchCreated=1
 elif test "$branchOption" = 2; then
-  branchPrefix="dvbg"
+  git checkout --no-track -b "dvbg-${ticket,,}/$USERNAME/${description,,}" origin/main
+  isBranchCreated=1
 elif test "$branchOption" = 3; then
-  branchPrefix="qabg"
+  git checkout --no-track -b "qabg-${ticket,,}/$USERNAME/${description,,}" origin/main
+  isBranchCreated=1
 elif test "$branchOption" = 4; then
-  branchPrefix="hfbg"
+  git checkout --no-track -b "hfbg-${ticket,,}/$USERNAME/${description,,}" origin/main
+  isBranchCreated=1
 elif test "$branchOption" = 5; then
-  branchPrefix="esbg"
+  git checkout --no-track -b "esbg-${ticket,,}/$USERNAME/${description,,}" origin/main
+  isBranchCreated=1
 fi
 
-if ! git checkout --no-track -b "$branchPrefix-${ticket,,}/$USERNAME/${description,,}" origin/main; then
-  echo "$(tput setaf 1)ERROR: Your branch is not created, Please re-try!"
-  exit
+if [[ "$isBranchCreated" -eq "1" ]]; then
+  echo "$(tput setaf 2) ********************** Your Branch is created successfully ****************************"
 fi
-
-echo "$(tput setaf 2) ********************** Your Branch is created successfully ****************************"
