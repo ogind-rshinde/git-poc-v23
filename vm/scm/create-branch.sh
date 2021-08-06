@@ -47,7 +47,9 @@ done
 description=$(echo "$description" | tr -d '%#@$^*!~')
 description=$(echo "$description" | xargs)
 description=${description// /-}
-ticket=${ticket// /-}
+ticket="${ticket// /-}"
+ticket="${ticket^^}"
+
 echo "$(tput setaf 3) "
 
 echo "executing command: git fetch origin"
@@ -65,7 +67,7 @@ elif test "$branchOption" = 5; then
   branchPrefix="esbg"
 fi
 
-if ! git checkout --no-track -b "$branchPrefix-${ticket,,}/$USERNAME/${description,,}" origin/main; then
+if ! git checkout --no-track -b "$branchPrefix-${ticket}/$USERNAME/${description,,}" origin/main; then
   echo "$(tput setaf 1)ERROR: Your branch is not created, Please re-try!"
   exit
 fi
