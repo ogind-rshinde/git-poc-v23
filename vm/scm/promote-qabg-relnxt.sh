@@ -62,7 +62,7 @@ if [[ "$branchType" == "qabg" ]]; then
 
   git push origin "$qarnBranchName" -f
   releaseBranch='release/next'
-  gh pr create -t "Merge qarn branch for $BRANCH to release/next branch" -b "qarn PR merge to release/next branch" -B "$releaseBranch"
+  gh pr create -t "Merge qarn branch for $BRANCH to release/next branch" -F "D:/projects/git-poc-v23/vm/scm/pr-template.txt" -B "$releaseBranch"
   git checkout "$BRANCH"
 
 elif [[ "$branchType" == "qarn" ]]; then
@@ -85,7 +85,7 @@ elif [[ "$branchType" == "qarn" ]]; then
     esac
   done
   releaseBranch='release/next'
-  gh pr create -t "Merge qarn branch for $BRANCH to release/next branch" -b "Hotfix PR merge to release/next branch" -B "$releaseBranch"
+  gh pr create -t "Merge qarn branch for $BRANCH to release/next branch" -F "D:/projects/git-poc-v23/vm/scm/pr-template.txt" -B "$releaseBranch"
 
 else
   echo "$(tput setaf 1) ***** This script is applicable only for qabg branches! **** "

@@ -1,0 +1,31 @@
+<!--- Title Link to Jira Ticket - UPDATE WITH YOUR TICKET TAG in name and url --->
+## [TICKET](https://opengovinc.atlassian.net/browse/XXX-999)
+
+## Description
+<!--- Describe these changes in detail --->
+
+## Screenshots/Jenkins Job Link/GIF:
+<!--- Provided a link to jenkins job where the new/modified feature files ran. --->
+<!--- Otherwise attached a screenshottest result output from running the new/modified feature files locally.  --->
+
+## Submitter Checklist
+<!--- Go over all the following points, and put an `x` in all the boxes that apply. --->
+<!--- If any of the following checkboxes don't apply, simply strike them out: ~~ ... ~~ --->
+- [ ] I have run my code changes locally
+- [ ] My description clearly states the impact of this code change
+- [ ] I have provided proof these tests pass in the "Screenshots/Jenkins Job Link/GIF" section
+- [ ] If I made changes to dependencies/package versions I have clearly described the reason/impact of these changes
+- [ ] I have added a comment to the jira ticket stating this PR is ready for review
+- [ ] I have informed the #team-financials channel that my PR is ready for review
+
+## Reviewer Checklist
+<!--- Go over all the following points, and put an `x` in all the boxes that apply. --->
+<!--- If any of the following checkboxes don't apply, simply strike them out: ~~ ... ~~ --->
+- [ ] I have run this code change locally
+- [ ] Submitter's description clearly states the impact of this code change
+- [ ] Submitter has provided proof these tests pass in the "Screenshots/Jenkins Job Link/GIF" section
+- [ ] If the submitter made changes to dependencies/package versions I have clearly described the reason/impact of these changes
+
+## General Notes
+- As a reviewer When you see something that you really like (E.G a clean implementation or creative solution
+to a hard problem), be sure to give the PR submitter praise in the pr with a comment.
