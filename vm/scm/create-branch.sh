@@ -47,30 +47,29 @@ done
 description=$(echo "$description" | tr -d '%#@$^*!~')
 description=$(echo "$description" | xargs)
 description=${description// /-}
-ticket=${ticket// /-}
+ticket="${ticket// /-}"
+ticket="${ticket^^}"
+
 echo "$(tput setaf 3) "
 
 echo "executing command: git fetch origin"
 git fetch origin
-isBranchCreated=0
 
 if test "$branchOption" = 1; then
-  git checkout --no-track -b "feat-${ticket,,}/$USERNAME/${description,,}" origin/main
-  isBranchCreated=1
+  branchPrefix="feat"
 elif test "$branchOption" = 2; then
-  git checkout --no-track -b "dvbg-${ticket,,}/$USERNAME/${description,,}" origin/main
-  isBranchCreated=1
+  branchPrefix="dvbg"
 elif test "$branchOption" = 3; then
-  git checkout --no-track -b "qabg-${ticket,,}/$USERNAME/${description,,}" origin/main
-  isBranchCreated=1
+  branchPrefix="qabg"
 elif test "$branchOption" = 4; then
-  git checkout --no-track -b "hfbg-${ticket,,}/$USERNAME/${description,,}" origin/main
-  isBranchCreated=1
+  branchPrefix="hfbg"
 elif test "$branchOption" = 5; then
-  git checkout --no-track -b "esbg-${ticket,,}/$USERNAME/${description,,}" origin/main
-  isBranchCreated=1
+  branchPrefix="esbg"
 fi
 
-if [[ "$isBranchCreated" -eq "1" ]]; then
-  echo "$(tput setaf 2) ********************** Your Branch is created successfully ****************************"
+if ! git checkout --no-track -b "$branchPrefix-${ticket}/$USERNAME/${description,,}" origin/main; then
+  echo "$(tput setaf 1)ERROR: Your branch is not created, Please re-try!"
+  exit
 fi
+
+echo "$(tput setaf 2) ********************** Your Branch is created successfully ****************************"
