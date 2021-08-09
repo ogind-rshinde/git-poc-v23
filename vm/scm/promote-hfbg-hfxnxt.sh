@@ -12,7 +12,7 @@ branchType=${BRANCH:0:4}
 if [[ "$branchType" == "hfbg" ]]; then
   echo "Identifying PR number for the current branch"
   #getting the pull request number created for the current branch to merge into main branch.
-  echo "$(tput setaf 7)Executing command: gh pr list --base main -s all --search created:>$previousDate | grep $BRANCH | cut -d $'\t' -f1"
+  echo "$(tput setaf 7)Executing command: gh pr list --base main -s all --search created:>$previousDate | grep $BRANCH"
   prNumber=$(gh pr list --base main -s all --search "created:>$previousDate" | grep "$BRANCH" | cut -d $'\t' -f1)
   echo "$(tput setaf 2)PR Number is:  $prNumber"
 
@@ -85,7 +85,7 @@ elif [[ "$branchType" == "hfhn" ]]; then
     esac
   done
   hotfixBranch='hotfix/next'
-  gh pr create -t "Merge hfhn branch for $BRANCH to hotfix/next branch" -b "Hotfix PR merge to hotfix/next branch" -B "$hotfixBranch"
+  gh pr create -t "Merge hfhn branch $BRANCH to hotfix/next branch" -b "hfhn PR merge to hotfix/next branch" -B "$hotfixBranch"
 
 else
   echo "$(tput setaf 1) ***** This script is applicable only for hfbg and hfhn prefix branches! **** "
