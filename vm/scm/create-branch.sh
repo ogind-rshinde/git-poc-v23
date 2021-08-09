@@ -7,7 +7,7 @@ if [[ "$USERNAME" == "" ]]; then
   read -r -p "$(tput setaf 2) Please provide your GitHub username which will be used for creating the branches: " userid
   echo "executing command: git config user.userid $userid"
   git config user.userid "$userid"
-  echo "Your GitHub Account has been setup successfully. Kindly run the branch-create.sh command once again."
+  echo "Your GitHub Account has been setup successfully. Kindly run the ./vm/scm/create-branch.sh command once again."
   exit
 fi
 

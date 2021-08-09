@@ -85,7 +85,7 @@ elif [[ "$branchType" == "hfrn" ]]; then
     esac
   done
   releaseBranch='release/next'
-  gh pr create -t "Merge hfrn branch for $BRANCH to release/next branch" -b "Hotfix PR merge to release/next branch" -B "$releaseBranch"
+  gh pr create -t "Merge hfrn branch $BRANCH to release/next branch" -b "hfrn PR merge to release/next branch" -B "$releaseBranch"
   hfbgBranchName="${BRANCH/hfrn/hfbg}"
   git checkout "$hfbgBranchName"
 else
